@@ -1,0 +1,50 @@
+<dialog #dialog>
+  <div class="grid">
+    <label>Name:</label>
+    <input
+      class="right"
+      value="{{ newStrafe.name }}"
+      (change)="changeName($event)"
+    />
+  </div>
+
+  <div class="grid">
+    <label>Datum:</label>
+    <label class="right">{{ newStrafe.datum | date: 'dd.MM.yyyy' }}</label>
+  </div>
+
+  <div class="grid">
+    <label>Strafe:</label>
+    <input
+      type="number"
+      class="right"
+      value="{{ newStrafe.strafe }}"
+      (change)="changeStrafe($event)"
+    />
+  </div>
+
+  <div class="grid">
+    <label>Status:</label>
+    <select [value]="1" class="right" (change)="changeStatus($event)">
+      <option *ngFor="let status of statusList.values()" [value]="status">
+        {{ status }}
+      </option>
+    </select>
+  </div>
+
+  <div class="grid">
+    <label>Kommentar:</label>
+    <input
+      class="right"
+      value="{{ newStrafe.kommentar }}"
+      (change)="changeKommentar($event)"
+    />
+  </div>
+
+  <div class="grid">
+    <button (click)="SafeStrafe(dialog)">Abbrechen</button>
+    <button class="right" (click)="SafeStrafe(dialog, true)">Safe</button>
+  </div>
+</dialog>
+
+<button (click)="openDialog(dialog)" *ngIf="isloggedIn">Hinzufügen</button>

@@ -1,0 +1,12 @@
+.isActive {
+  background-color: black;
+  color: yellow;
+}
+
+.isDeactive {
+  background-color: yellow;
+}
+
+button {
+  border-radius: 18px;
+}

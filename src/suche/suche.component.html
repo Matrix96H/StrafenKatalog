@@ -1,0 +1,14 @@
+<input
+  type="search"
+  list="Spieler"
+  value="{{ suche }}"
+  (change)="changeSuche($event)"
+/>
+<datalist id="Spieler">
+  <option
+    *ngFor="let spieler of spielerList | async"
+    [value]="spieler"
+  ></option>
+</datalist>
+
+<button (click)="filterName()">Suchen</button>

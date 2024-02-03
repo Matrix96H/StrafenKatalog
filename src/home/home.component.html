@@ -1,0 +1,29 @@
+<app-banner></app-banner>
+
+<div class="grid">
+  <app-suche></app-suche>
+  <app-login-button [isloggedIn]="isloggedIn" class="right"></app-login-button>
+</div>
+<div class="filter">
+  <app-filter
+    *ngFor="let status of statusList.values(); index as i"
+    [buttonText]="status"
+    [index]="i"
+    class="filter_buttons"
+  ></app-filter>
+</div>
+<div class="grid">
+  <label>Summe offener Strafen: {{ summe$ | async }}€</label>
+  <app-add-button [isloggedIn]="isloggedIn" class="right"></app-add-button>
+</div>
+<div *ngFor="let strafe of strafen; index as i">
+  <div
+    class="border"
+    [ngClass]="{
+      background_black: i % 2 == 0,
+      background_yellow: i % 2 == 1
+    }"
+  >
+    <app-strafe [strafe]="strafe" [loggedIn]="isloggedIn"></app-strafe>
+  </div>
+</div>

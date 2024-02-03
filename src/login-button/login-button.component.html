@@ -1,0 +1,24 @@
+<dialog #dialog>
+  <div class="grid">
+    <label>Username:</label>
+    <input [value]="username" type="text" (change)="changeUserName($event)" />
+  </div>
+  <div class="grid">
+    <label>Passwort:</label>
+    <input
+      [value]="password"
+      type="password"
+      (change)="changePasswort($event)"
+    />
+  </div>
+  <div div class="grid">
+    <button (click)="dialog.close()">Abbrechen</button>
+    <button class="right" (click)="checkPasswort(dialog)">Enter</button>
+  </div>
+  <label class="errorText">{{ errorText }}</label>
+</dialog>
+
+<button (click)="openDialog(dialog)" *ngIf="isloggedIn == false">
+  Anmelden
+</button>
+<button (click)="logOut()" *ngIf="isloggedIn == true">Abmelden</button>

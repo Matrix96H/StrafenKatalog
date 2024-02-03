@@ -1,0 +1,19 @@
+label {
+  width: 70px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: 70px auto;
+  align-items: center;
+  height: 40px;
+}
+
+.right {
+  margin-left: auto;
+  margin-right: 5px;
+}
+
+.errorText {
+  color: red;
+  font-size: 10px;
+}

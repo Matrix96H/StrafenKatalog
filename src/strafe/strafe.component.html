@@ -1,0 +1,58 @@
+<div class="grid">
+  <div>
+    <label>Name:</label>
+    <input
+      *ngIf="isEditActive"
+      value="{{ strafe.name }}"
+      (change)="changeName($event)"
+    />
+    <label *ngIf="!isEditActive">{{ strafe.name }}</label>
+  </div>
+  <div class="right">
+    <label>Datum:</label>
+    <label>{{ strafe.datum | date: 'dd.MM.yyyy' }}</label>
+  </div>
+</div>
+
+<div>
+  <label>Strafe:</label>
+  <input
+    *ngIf="isEditActive"
+    type="number"
+    value="{{ strafe.strafe }}"
+    (change)="changeStrafe($event)"
+  />
+  <label *ngIf="!isEditActive">{{ strafe.strafe }}€</label>
+</div>
+
+<div>
+  <label>Status:</label>
+  <label *ngIf="!isEditActive">{{ strafe.status }}</label>
+  <select
+    *ngIf="isEditActive"
+    value="{{ strafe.status }}"
+    (change)="changeStatus($event)"
+  >
+    <option *ngFor="let status of statusList.values()" [value]="status">
+      {{ status }}
+    </option>
+  </select>
+</div>
+
+<div class="grid" *ngIf="strafe.kommentar != '' || loggedIn">
+  <div *ngIf="strafe.kommentar != '' || loggedIn">
+    <label>Kommentar:</label>
+    <input
+      *ngIf="isEditActive"
+      value="{{ strafe.kommentar }}"
+      (change)="changeKommentar($event)"
+    />
+    <label *ngIf="!isEditActive">{{ strafe.kommentar }}</label>
+  </div>
+  <div class="right" *ngIf="loggedIn && isEditActive">
+    <button (click)="save()">Save</button>
+  </div>
+  <div class="right" *ngIf="loggedIn && !isEditActive">
+    <button (click)="goToEditMode()">Bearbeiten</button>
+  </div>
+</div>

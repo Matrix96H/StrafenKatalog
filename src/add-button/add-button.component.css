@@ -1,0 +1,11 @@
+.grid {
+  display: grid;
+  grid-template-columns: 85px auto;
+  align-items: center;
+  height: 40px;
+}
+
+.right {
+  margin-left: auto;
+  margin-right: 5px;
+}

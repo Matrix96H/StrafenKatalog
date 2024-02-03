@@ -1,0 +1,9 @@
+<button
+  (click)="changeFilterState()"
+  [ngClass]="{
+    isActive: isActive,
+    isDeactive: !isActive
+  }"
+>
+  {{ buttonText }}
+</button>
